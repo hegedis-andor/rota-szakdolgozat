@@ -1,0 +1,30 @@
+<div class="container">
+  <ng-container *ngIf="orders$ | async as orders">
+    <ng-container *ngIf="orders.length > 0; else noOrders">
+      <ng-container *ngFor="let order of orders; trackBy: trackOrdersBy">
+        <div class="order" *ngIf="hasItemInPreparingStatus(order)">
+          <expansion-panel>
+            <span title>{{ order.tableName }}</span>
+
+            <div list-item class="list-item">
+              <span>Set done</span>
+              <span class="material-icons done" (click)="markOrderAsDone(order)">check_circle</span>
+            </div>
+
+            <order-list-item
+              list-item
+              *ngFor="let orderItem of order.items"
+              [isLoading]="isLoading$ | async"
+              [orderItem]="orderItem"
+              (click)="editItemStatus(orderItem, order)"
+            ></order-list-item>
+          </expansion-panel>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #noOrders>
+  <div class="no-orders">{{ "CHEF.NO_ORDERS" | translate }}</div>
+</ng-template>

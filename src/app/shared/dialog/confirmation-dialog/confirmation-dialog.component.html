@@ -1,0 +1,12 @@
+<div class="container">
+  <h3 class="title">{{ data.title | translate }}</h3>
+  <div class="text">{{ data.text | translate }}</div>
+  <div class="optional-text">{{ data.optionalText | translate }}</div>
+
+  <div class="actions">
+    <button class="close" (click)="dialogRef.close()">{{ data.actions.cancel | translate }}</button>
+    <button class="confirm" [class.danger]="data.actions.danger" (click)="confirm()">
+      {{ data.actions.confrim | translate }}
+    </button>
+  </div>
+</div>

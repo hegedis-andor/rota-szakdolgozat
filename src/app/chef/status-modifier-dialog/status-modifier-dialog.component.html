@@ -1,0 +1,18 @@
+<div class="container">
+  <h2 class="title">{{ "CHEF.STATUS_MODIFIER_DIALOG.TITLE" | translate }}</h2>
+  <mat-radio-group class="status" (change)="selectedOptionStatus = $event.value">
+    <mat-radio-button [disableRipple]="true" class="option" [value]="'rejected'" [checked]="data.status === 'rejected'">
+      {{ "CHEF.STATUS_MODIFIER_DIALOG.ORDER_ITEM_STATUS_REJECTED" | translate }}
+    </mat-radio-button>
+    <mat-radio-button [disableRipple]="true" class="option" [value]="'preparing'" [checked]="data.status === 'preparing'">
+      {{ "CHEF.STATUS_MODIFIER_DIALOG.ORDER_ITEM_STATUS_PREPARING" | translate }}
+    </mat-radio-button>
+    <mat-radio-button [disableRipple]="true" class="option" [value]="'ready'" [checked]="data.status === 'ready'">
+      {{ "CHEF.STATUS_MODIFIER_DIALOG.ORDER_ITEM_STATUS_READY" | translate }}
+    </mat-radio-button>
+  </mat-radio-group>
+  <div class="actions">
+    <button class="close" (click)="dialogRef.close()">{{ "CHEF.STATUS_MODIFIER_DIALOG.ACTION_CLOSE" | translate }}</button>
+    <button class="save" (click)="save()">{{ "CHEF.STATUS_MODIFIER_DIALOG.ACTION_SAVE" | translate }}</button>
+  </div>
+</div>

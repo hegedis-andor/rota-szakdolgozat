@@ -1,0 +1,42 @@
+<div class="container">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input
+        formControlName="groupName"
+        matInput
+        required
+        placeholder="{{ 'RESOURCE_MANAGEMENT.GROUP_EDITOR.GROUP_NAME_PLACEHOLDER' | translate }}"
+      />
+      <mat-error *ngIf="form.controls.groupName.hasError('required')">{{
+        "RESOURCE_MANAGEMENT.GROUP_EDITOR.ERROR_REQUIRED" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <div class="subgroups" formArrayName="subgroups">
+      <div class="subgroup" [formGroupName]="i" *ngFor="let subgroupControl of subgroupControlls; index as i">
+        <mat-form-field>
+          <input
+            formControlName="name"
+            matInput
+            [required]="i === 0"
+            placeholder="{{ 'RESOURCE_MANAGEMENT.GROUP_EDITOR.SUBGROUP' | translate }}"
+          />
+          <mat-error>{{ "RESOURCE_MANAGEMENT.GROUP_EDITOR.ERROR_REQUIRED" | translate }}</mat-error>
+        </mat-form-field>
+        <i class="material-icons" *ngIf="i != 0" (click)="removeSubgroup(i)">remove</i>
+        <i class="material-icons" (click)="addExtraSubgroup()">add</i>
+      </div>
+    </div>
+
+    <div class="button">
+      <button-outlined (click)="saveGroup()" [disabled]="form.invalid" [loading]="isLoading$ | async">{{
+        "RESOURCE_MANAGEMENT.GROUP_EDITOR.BUTTON_TEXT" | translate
+      }}</button-outlined>
+    </div>
+
+    <div class="info">
+      <i class="material-icons">info</i>
+      <div>{{ "RESOURCE_MANAGEMENT.GROUP_EDITOR.INFO_MESSAGE" | translate }}</div>
+    </div>
+  </form>
+</div>

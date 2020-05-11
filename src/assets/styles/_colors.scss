@@ -1,0 +1,77 @@
+$color-primary-olive: #356859;
+$color-500-olive: #37966f;
+$color-100-olive: #b9e4c9;
+$color-secondary-orange: #fd5523;
+$color-bg-light: #fffbe6;
+$color-bg2-light: #fff5cbf1;
+$color-yellow-light: #ffd220;
+$color-success: #008d5c;
+$color-disabled: #35685991;
+$color-danger: #ff3d23;
+$color-grey: #00000015;
+
+$md-olive: (
+  50: #e7edeb,
+  100: #c2d2cd,
+  200: #9ab4ac,
+  300: #72958b,
+  400: #537f72,
+  500: #356859,
+  600: #306051,
+  700: #285548,
+  800: #224b3e,
+  900: #163a2e,
+  A100: #7affd0,
+  A200: #47ffbe,
+  A400: #14ffab,
+  A700: #00f9a2,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);
+
+$md-orange: (
+  50: #ffebe5,
+  100: #feccbd,
+  200: #feaa91,
+  300: #fe8865,
+  400: #fd6f44,
+  500: #fd5523,
+  600: #fd4e1f,
+  700: #fc441a,
+  800: #fc3b15,
+  900: #fc2a0c,
+  A100: #ffffff,
+  A200: #fff3f2,
+  A400: #ffc5bf,
+  A700: #ffaea6,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000
+  )
+);

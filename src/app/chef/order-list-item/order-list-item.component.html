@@ -1,0 +1,18 @@
+<div list-item class="list-item-container">
+  <ng-container *ngIf="isLoading; else status">
+    <loading-indicator></loading-indicator>
+  </ng-container>
+  <ng-template #status>
+    <span class="status" [ngSwitch]="orderItem.status">
+      <i class="material-icons ready" *ngSwitchCase="'ready'">check_circle_outline</i>
+      <i class="material-icons preparing" *ngSwitchCase="'preparing'">remove_circle_outline</i>
+      <i class="material-icons rejected" *ngSwitchCase="'rejected'">report</i>
+    </span>
+  </ng-template>
+
+  <span class="amount">{{ orderItem.amount }}x</span>
+  <span class="name">{{ orderItem.name }}</span>
+  <span class="actions">
+    <i class="material-icons">edit</i>
+  </span>
+</div>

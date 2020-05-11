@@ -1,0 +1,45 @@
+<div class="container">
+  <ng-container *ngIf="product$ | async as product; else noProduct">
+    <div>
+      <img [src]="product.imageUrl" />
+    </div>
+    <div>
+      <span class="name bolder">{{ product.name }}</span>
+    </div>
+    <div class="description">
+      <div>
+        <span class="bolder">{{ "ORDERING.PRODUCT_PAGE.DESCRIPTION" | translate }}:</span>
+        {{ convertToNAIfEmpty(product.description) }}
+      </div>
+      <div>
+        <span class="bolder">{{ "ORDERING.PRODUCT_PAGE.INGREDIENTS" | translate }}:</span>
+        {{ convertToNAIfEmpty(product.ingredients) }}
+      </div>
+      <div>
+        <span class="bolder"> {{ "ORDERING.PRODUCT_PAGE.ALLERGENS" | translate }}: </span>
+        <span>
+          {{ convertToNAIfEmpty(product.allergens) }}
+        </span>
+      </div>
+      <div class="price-row">
+        <div>
+          <span class="bolder">{{ "ORDERING.PRODUCT_PAGE.PREPARATION_TIME" | translate }}: </span>
+          {{ convertToNAIfEmpty(product.preparationTime) }} {{ "ORDERING.PRODUCT_PAGE.PREPARATION_TIME_UNIT" | translate }}
+        </div>
+        <div>
+          <span class="bolder">{{ "ORDERING.PRODUCT_PAGE.PRICE" | translate }}:</span>
+          {{ product.price | currency: currency:"symbol-narrow":"0.2-2" }}
+        </div>
+      </div>
+    </div>
+
+    <div class="cart">
+      <amount-selector [initialValue]="'1'" [minValue]="'1'" (valueChange)="selectedAmount = $event"></amount-selector>
+      <i class="material-icons" (click)="addToCart(product)">add_shopping_cart</i>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #noProduct>
+  {{ "ORDERING.PRODUCT_PAGE.NO_PRODUCT_FOUND" | translate }}
+</ng-template>

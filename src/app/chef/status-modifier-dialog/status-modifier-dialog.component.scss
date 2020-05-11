@@ -1,0 +1,34 @@
+@import "src/assets/styles/colors";
+
+.container {
+  color: $color-primary-olive;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+
+  .option {
+    padding: 0.5rem;
+  }
+}
+
+.actions {
+  display: flex;
+  cursor: pointer;
+  user-select: none;
+  justify-content: flex-end;
+
+  button {
+    background: transparent;
+    padding: 1rem;
+    font-weight: 600;
+    color: $color-primary-olive;
+    font-size: 1rem;
+    outline: none;
+  }
+}
+
+.option {
+  padding: 0.5rem;
+}

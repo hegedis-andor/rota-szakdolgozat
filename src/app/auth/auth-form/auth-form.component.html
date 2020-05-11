@@ -1,0 +1,13 @@
+<form [formGroup]="authFormData.form">
+  <mat-form-field *ngFor="let controlData of authFormData.formControls">
+    <input
+      [type]="controlData.type"
+      [formControlName]="controlData.name"
+      matInput
+      placeholder="{{ controlData.placeholder | translate }}"
+      required
+    />
+    <mat-icon matSuffix>controlData.icon</mat-icon>
+    <mat-hint *ngIf="controlData.hint">{{ controlData.hint | translate }}</mat-hint>
+  </mat-form-field>
+</form>

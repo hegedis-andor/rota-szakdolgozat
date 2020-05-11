@@ -1,0 +1,4 @@
+<span class="content">
+  <span class="text">{{ data.text | translate }} {{ data.subText | translate }}</span>
+  <span *ngIf="data.actionName" class="action" (click)="snackBarRef.dismiss()">{{ data.actionName | translate }}</span>
+</span>

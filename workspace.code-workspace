@@ -1,0 +1,28 @@
+{
+  "folders": [
+    {
+      "name": "app",
+      "path": "src\\app"
+    },
+    {
+      "name": "assets",
+      "path": "src\\assets"
+    },
+    {
+      "name": "theme",
+      "path": "src\\theme"
+    },
+    {
+      "name": "src",
+      "path": "firebase\\functions\\src"
+    },
+    {
+      "name": "ordering-app",
+      "path": "."
+    }
+  ],
+  "settings": {
+    "git.ignoreLimitWarning": true,
+    "explorer.compactFolders": false
+  }
+}

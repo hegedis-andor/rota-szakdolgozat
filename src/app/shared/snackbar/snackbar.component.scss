@@ -1,0 +1,16 @@
+@import "src/assets/styles/colors";
+
+.content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.action {
+  cursor: pointer;
+  font-weight: 600;
+  opacity: 0.5;
+
+  &:hover {
+    opacity: 1;
+  }
+}

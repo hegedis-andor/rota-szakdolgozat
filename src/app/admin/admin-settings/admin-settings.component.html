@@ -1,0 +1,22 @@
+<div class="container">
+  <div class="language">
+    <mat-form-field>
+      <mat-label>{{ "ADMIN.ADMIN_SETTINGS.SELECT_LANGUAGE" | translate }}</mat-label>
+      <mat-select [(value)]="selectedLanguage" (selectionChange)="saveLanguage()">
+        <mat-option [value]="'hun'">{{ "ADMIN.ADMIN_SETTINGS.LANGUAGE_HUNGARIAN" | translate }}</mat-option>
+        <mat-option [value]="'en'">{{ "ADMIN.ADMIN_SETTINGS.LANGUAGE_ENGLISH" | translate }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="currency">
+    <mat-form-field>
+      <mat-label>{{ "ADMIN.ADMIN_SETTINGS.SELECT_CURRENCY" | translate }}</mat-label>
+      <mat-select [(value)]="selectedCurrency" (selectionChange)="saveCurrency()">
+        <mat-option [value]="'HUF'">HUF</mat-option>
+        <mat-option [value]="'EUR'">EUR</mat-option>
+        <mat-option [value]="'USD'">USD</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+</div>

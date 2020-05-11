@@ -1,0 +1,37 @@
+<div class="container">
+  <form [formGroup]="form">
+    <mat-form-field>
+      <input
+        formControlName="tableName"
+        matInput
+        required
+        placeholder="{{ 'RESOURCE_MANAGEMENT.TABLE_EDITOR.TABLE_NAME_PLACEHOLDER' | translate }}"
+      />
+      <mat-error *ngIf="form.controls.tableName.hasError('required')">{{
+        "RESOURCE_MANAGEMENT.TABLE_EDITOR.ERROR_REQUIRED" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field>
+      <input
+        formControlName="numberOfSeats"
+        matInput
+        required
+        placeholder="{{ 'RESOURCE_MANAGEMENT.TABLE_EDITOR.NUMBER_OF_SEATS_PLACEHOLDER' | translate }}"
+      />
+      <mat-hint>{{ "RESOURCE_MANAGEMENT.TABLE_EDITOR.NUMBER_OF_SEATS_HINT" | translate }}</mat-hint>
+      <mat-error *ngIf="form.controls.numberOfSeats.hasError('required')">{{
+        "RESOURCE_MANAGEMENT.TABLE_EDITOR.ERROR_REQUIRED" | translate
+      }}</mat-error>
+      <mat-error *ngIf="form.controls.numberOfSeats.hasError('pattern')">{{
+        "RESOURCE_MANAGEMENT.TABLE_EDITOR.NUMBER_OF_SEATS_ERROR_PATTERN" | translate
+      }}</mat-error>
+    </mat-form-field>
+
+    <div class="button">
+      <button-outlined (click)="saveTable()" [disabled]="form.invalid" [loading]="isLoading$ | async">{{
+        "RESOURCE_MANAGEMENT.TABLE_EDITOR.BUTTON_TEXT" | translate
+      }}</button-outlined>
+    </div>
+  </form>
+</div>

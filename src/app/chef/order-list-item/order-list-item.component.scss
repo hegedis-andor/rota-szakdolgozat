@@ -1,0 +1,42 @@
+@import "src/assets/styles/colors";
+
+.body {
+  box-shadow: 0 2px 3px rgba($color: #000000, $alpha: 0.4);
+  font-weight: 600;
+}
+
+.list-item-container {
+  padding: 1rem;
+  display: grid;
+  grid-template-columns: 40px 40px 212px 28px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-bg2-light;
+  }
+
+  .amount,
+  .status {
+    padding-right: 0.5rem;
+    color: $color-secondary-orange;
+  }
+
+  .name {
+    color: $color-secondary-orange;
+  }
+}
+
+.material-icons {
+  user-select: none;
+  cursor: pointer;
+
+  &.ready {
+    color: $color-success;
+  }
+  &.preparing {
+    color: $color-yellow-light;
+  }
+  &.rejected {
+    color: $color-danger;
+  }
+}

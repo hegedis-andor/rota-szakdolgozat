@@ -1,0 +1,69 @@
+@import "src/assets/styles/colors";
+
+:host {
+  color: $color-primary-olive;
+  padding-top: 3rem;
+  overflow-y: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+  width: 100%;
+  overflow-x: auto;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    align-items: flex-start;
+  }
+}
+
+table {
+  width: 70%;
+  border-collapse: separate;
+  border-spacing: 0 1rem;
+  text-align: left;
+  table-layout: auto;
+
+  td {
+    border-bottom: 1px solid $color-grey;
+  }
+}
+
+th {
+  font-size: 1.1rem;
+  padding-bottom: 1rem;
+  padding-right: 1rem;
+}
+
+tfoot {
+  tr {
+    font-size: 1.2rem;
+  }
+
+  td {
+    border: none;
+  }
+}
+
+.name {
+  color: $color-secondary-orange;
+}
+
+.button {
+  padding-top: 2rem;
+  width: 40%;
+  align-self: center;
+}
+
+.select-table-sign {
+  color: $color-danger;
+}
+
+.material-icons {
+  cursor: pointer;
+  user-select: none;
+}

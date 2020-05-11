@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="content" *ngIf="isLoading$ | async as isLoading">
+    <h1>{{ "LOADING_RESOURCES.TITLE" | translate }}</h1>
+    <loading-indicator></loading-indicator>
+    <div>
+      <h5>
+        {{ "LOADING_RESOURCES.RESOURCE_TABLE" | translate }}:
+        <ng-container *ngIf="isLoading.tables; then loading; else loaded"></ng-container>
+      </h5>
+      <h5>
+        {{ "LOADING_RESOURCES.RESOURCE_GROUPS" | translate }}:
+        <ng-container *ngIf="isLoading.groups; then loading; else loaded"></ng-container>
+      </h5>
+      <h5>
+        {{ "LOADING_RESOURCES.RESOURCE_PRODUCTS" | translate }}:
+        <ng-container *ngIf="isLoading.products; then loading; else loaded"></ng-container>
+      </h5>
+    </div>
+  </div>
+
+  <ng-template #loading> ...</ng-template>
+
+  <ng-template #loaded>
+    <span>{{ "LOADING_RESOURCES.LOADED" | translate }}</span>
+  </ng-template>
+
+  <ng-container *ngIf="failedResources$ | async as failedResources">
+    <div class="failed" *ngIf="objectKeys(failedResources).length > 0">
+      <i class="material-icons">error</i>
+      <h1>{{ "LOADING_RESOURCES.FAILED" | translate }}</h1>
+      <h6 *ngFor="let resource of objectKeys(failedResources)">
+        {{ "LOADING_RESOURCES.COULD_NOT_LOAD_RESOURCE" | translate: { resource: resource } }}
+      </h6>
+      <button-outlined (click)="tryAgain()">{{ "LOADING_RESOURCES.BUTTON_TRY_AGAIN" | translate }}</button-outlined>
+      <button-outlined (click)="signOut()">{{ "LOADING_RESOURCES.BUTTON_SIGN_OUT" | translate }}</button-outlined>
+    </div>
+  </ng-container>
+</div>

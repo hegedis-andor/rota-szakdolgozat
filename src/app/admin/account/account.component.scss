@@ -1,0 +1,26 @@
+@import "src/assets/styles/colors";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+}
+
+.details {
+  height: 400px;
+  width: 400px;
+}
+
+.credential {
+  padding: 1rem;
+  color: $color-primary-olive;
+}
+
+.button {
+  padding-top: 1rem;
+}
+
+.bolder {
+  font-weight: 600;
+}

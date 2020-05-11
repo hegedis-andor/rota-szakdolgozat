@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>{{ "ORDERING.SELECT_TABLE.CHOSEN_TABLE" | translate }} {{ (selectedTable$ | async)?.name }}</h2>
+
+  <div class="tables-container">
+    <div class="available-tables">
+      <h4>{{ "ORDERING.SELECT_TABLE.AVAILALBE_TABLES" | translate }}:</h4>
+      <div class="tables">
+        <div
+          class="table"
+          *ngFor="let table of availableTables"
+          (click)="select(table)"
+          [class.selected]="table.name === (selectedTable$ | async)?.name"
+        >
+          <div class="name">{{ table.name }}</div>
+          <div class="seats">{{ "ORDERING.SELECT_TABLE.TABLE_NUMBER_OF_SEATS" | translate }} {{ table.numberOfSeats }}</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="occupied-tables">
+      <h4>{{ "ORDERING.SELECT_TABLE.OCCUPIED_TABLES" | translate }}:</h4>
+
+      <div class="tables">
+        <div class="table" *ngFor="let table of occupiedTables">
+          <div class="name">{{ table.name }}</div>
+          <div class="seats">{{ "ORDERING.SELECT_TABLE.TABLE_NUMBER_OF_SEATS" | translate }} {{ table.numberOfSeats }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

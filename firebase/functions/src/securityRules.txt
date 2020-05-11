@@ -1,0 +1,33 @@
+--
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+  
+      function memberOfTheRestaurant(restaurantID) {
+        return get(/databases/$(database)/documents/membersByRestaurants/$(restaurantID)).data[request.auth.uid]== true
+      }
+  
+    match /restaurants/{restaurantID}/{document=**} {
+    	 allow read, write: if memberOfTheRestaurant(restaurantID)
+    }
+    match /settingsByRestaurants/{restaurantID} {
+    	 allow read, write: if memberOfTheRestaurant(restaurantID)
+    }
+    match /membersByRestaurants/{restaurantID} {
+    	 allow read, write: if memberOfTheRestaurant(restaurantID)
+    }
+  }
+}
+
+--
+Storage: (at the moment any authorized users can access storage)
+
+
+rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /{restaurnatId} {
+    	 allow read, write: if request.auth.uid != null
+    }
+  }
+}

@@ -1,0 +1,47 @@
+@import "src/assets/styles/colors";
+
+.tabgroup-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  margin-top: 3rem;
+
+  .tab-label {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: $color-primary-olive;
+  }
+
+  .tab-content {
+    max-width: 400px;
+    padding: 1rem;
+
+    .form-label {
+      margin-top: 1rem;
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .message {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+      min-height: 1rem;
+      max-height: 4rem;
+      font-size: 0.9rem;
+
+      .success {
+        color: $color-success;
+      }
+
+      .error {
+        color: $color-secondary-orange;
+      }
+    }
+
+    .margin-top {
+      margin-top: 1rem;
+    }
+  }
+}

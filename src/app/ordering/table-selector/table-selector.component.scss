@@ -1,0 +1,64 @@
+@import "src/assets/styles/colors";
+
+:host {
+  color: $color-primary-olive;
+  overflow: auto;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.tables-container {
+  display: flex;
+}
+
+h2 {
+  font-weight: 600;
+}
+
+.available-tables {
+  max-width: 600px;
+}
+
+.occupied-tables {
+  max-width: 600px;
+
+  .table {
+    cursor: not-allowed;
+    color: $color-bg-light;
+    background-color: $color-disabled;
+  }
+}
+
+.tables {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.table {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-width: 150px;
+  min-height: 75px;
+  margin: 1rem;
+  background-color: $color-500-olive;
+  color: $color-bg-light;
+  cursor: pointer;
+  user-select: none;
+
+  .seats {
+    font-size: 0.85rem;
+    padding: 0.5rem;
+  }
+
+  &.selected {
+    color: $color-500-olive;
+    background-color: $color-100-olive;
+  }
+}

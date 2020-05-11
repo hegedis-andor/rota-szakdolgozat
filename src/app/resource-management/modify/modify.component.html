@@ -1,0 +1,41 @@
+<div class="container">
+  <expansion-panel class="list tables" *ngIf="tables$ | async as tables">
+    <span title>{{ "RESOURCE_MANAGEMENT.MODIFY.EXPANSION_LIST_TITLE_TABLES" | translate }}</span>
+    <div list-item class="list-item-container" *ngFor="let table of tables">
+      <span class="name">{{ table.name }}</span>
+      <span class="sub-text">
+        {{ "RESOURCE_MANAGEMENT.MODIFY.EXPANSION_LIST_NUMBER_OF_SEATS" | translate }}: {{ table.numberOfSeats }}
+      </span>
+      <span class="actions">
+        <i class="material-icons" (click)="editTable(table)">edit</i>
+        <i class="material-icons delete" (click)="deleteTable(table)">delete</i>
+      </span>
+    </div>
+  </expansion-panel>
+
+  <expansion-panel class="list groups" *ngIf="groups$ | async as groups">
+    <span title>{{ "RESOURCE_MANAGEMENT.MODIFY.EXPANSION_LIST_TITLE_GOUPS" | translate }}</span>
+    <div list-item class="list-item-container" *ngFor="let group of groups">
+      <span title="{{ group.name }}" class="name">{{ group.name }}</span>
+      <ng-container *ngIf="joinSubgroups(group) as subgroups">
+        <span title="{{ subgroups }}" class="sub-text">{{ subgroups }}</span>
+      </ng-container>
+      <span class="actions">
+        <i class="material-icons" (click)="editGroup(group)">edit</i>
+        <i class="material-icons delete" (click)="deleteGroup(group)">delete</i>
+      </span>
+    </div>
+  </expansion-panel>
+
+  <expansion-panel class="list products" *ngIf="products$ | async as products">
+    <span title>{{ "RESOURCE_MANAGEMENT.MODIFY.EXPANSION_LIST_TITLE_PRODUCTS" | translate }}</span>
+    <div list-item class="list-item-container" *ngFor="let product of products">
+      <span title="{{ product.name }}" class="name">{{ product.name }}</span>
+      <span class="sub-text">{{ product.subgroup.name }}</span>
+      <span class="actions">
+        <i class="material-icons" (click)="editProduct(product)">edit</i>
+        <i class="material-icons delete" (click)="deleteProduct(product)">delete</i>
+      </span>
+    </div>
+  </expansion-panel>
+</div>

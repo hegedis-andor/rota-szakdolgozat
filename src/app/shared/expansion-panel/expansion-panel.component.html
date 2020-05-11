@@ -1,0 +1,10 @@
+<div class="container">
+  <div class="header">
+    <h3 class="title"><ng-content select="[title]"></ng-content></h3>
+    <i class="material-icons" (click)="open = !open">{{ open ? "expand_less" : "expand_more" }}</i>
+  </div>
+
+  <div class="body" [@expandAnimation]="open ? 'open' : 'close'">
+    <ng-content select="[list-item]"></ng-content>
+  </div>
+</div>

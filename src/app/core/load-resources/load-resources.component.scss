@@ -1,0 +1,42 @@
+@import "src/assets/styles/colors";
+
+:host {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-primary-olive;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.failed {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button-outlined {
+  padding: 0.5rem;
+  width: 200px;
+}
+
+i {
+  font-size: 4rem;
+  color: $color-danger;
+}
+
+h5 {
+  padding: 0;
+  margin: 0;
+}
+
+span {
+  padding-left: 0.5rem;
+  color: $color-secondary-orange;
+}

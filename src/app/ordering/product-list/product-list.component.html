@@ -1,0 +1,10 @@
+<div class="container">
+  <product-card *ngFor="let product of products$ | async" [imageUrl]="product.imageUrl" (click)="openProdcutPage(product)">
+    <ng-container title>{{ product.name }}</ng-container>
+    <ng-container description>{{ "ORDERING.PRODUCT_LIST.PRODUCT_CARD.INGREDIENTS" | translate }}: {{ product.ingredients }}</ng-container>
+    <ng-container footer>
+      {{ "ORDERING.PRODUCT_LIST.PRODUCT_CARD.PRICE" | translate }}:
+      {{ product.price | currency: currency:"symbol-narrow":"0.2-2" }}
+    </ng-container>
+  </product-card>
+</div>

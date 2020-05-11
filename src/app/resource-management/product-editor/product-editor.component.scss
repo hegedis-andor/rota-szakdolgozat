@@ -1,0 +1,70 @@
+@import "src/assets/styles/colors";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 90%;
+  padding: 1rem;
+}
+
+form {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.8rem;
+  width: 100%;
+  max-width: 800px;
+
+  .first-column {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    flex: 1;
+  }
+
+  .second-column {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 1rem;
+    flex: 1;
+
+    .preview-image {
+      display: flex;
+      justify-content: center;
+
+      img {
+        max-width: 300px;
+        max-height: 225px;
+      }
+    }
+
+    label {
+      padding: 1rem;
+      color: $color-primary-olive;
+      user-select: none;
+      cursor: pointer;
+
+      i {
+        font-size: 32px;
+      }
+    }
+  }
+}
+
+.image-edit-error {
+  padding-bottom: 0.8rem;
+  color: $color-secondary-orange;
+  font-size: 0.8rem;
+}
+.file-error {
+  color: $color-secondary-orange;
+  font-size: 0.8rem;
+}
+
+.button {
+  margin-top: 2rem;
+  width: 350px;
+}

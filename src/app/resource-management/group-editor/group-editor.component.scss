@@ -1,0 +1,54 @@
+@import "src/assets/styles/colors";
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 800px;
+  overflow: auto;
+  padding: 1rem;
+}
+
+form {
+  padding: 1rem;
+  width: 400px;
+  mat-form-field {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.subgroups {
+  max-height: 250px;
+  overflow: auto;
+}
+
+.subgroup {
+  display: flex;
+  padding: 0;
+  margin: 0;
+
+  .material-icons {
+    align-self: center;
+    cursor: pointer;
+    color: $color-primary-olive;
+    user-select: none;
+  }
+}
+
+.button {
+  margin: 1rem;
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  color: $color-primary-olive;
+  padding: 1rem;
+  font-size: 0.9rem;
+  white-space: pre-wrap;
+
+  .material-icons {
+    padding-right: 1rem;
+  }
+}

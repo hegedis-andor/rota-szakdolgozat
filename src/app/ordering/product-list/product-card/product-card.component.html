@@ -1,0 +1,16 @@
+<div class="image-container">
+  <img [src]="imageUrl" (load)="onLoad()" />
+  <loading-indicator *ngIf="loading"></loading-indicator>
+</div>
+
+<div class="title bolder">
+  <ng-content select="[title]"></ng-content>
+</div>
+
+<div class="description">
+  <ng-content select="[description]"></ng-content>
+</div>
+
+<div class="footer bolder">
+  <ng-content select="[footer]"></ng-content>
+</div>

@@ -1,0 +1,104 @@
+<div class="container">
+  <form [formGroup]="form">
+    <div class="first-column">
+      <mat-form-field>
+        <input
+          formControlName="name"
+          matInput
+          required
+          placeholder="{{ 'RESOURCE_MANAGEMENT.PRODUCT_EDITOR.PRODUCT_NAME_PLACEHOLDER' | translate }}"
+        />
+        <mat-error *ngIf="form.controls.name.hasError('required')">{{
+          "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.ERROR_REQUIRED" | translate
+        }}</mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>{{ "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.CHOOSE_SUBGROUP_PLACEHOLDER" | translate }}</mat-label>
+        <mat-select formControlName="subgroup" [required]="true">
+          <mat-option *ngFor="let subgroup of subgroups$ | async" [value]="subgroup.id">
+            {{ subgroup.name }}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="form.get('subgroup').hasError('required')">
+          {{ "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.ERROR_REQUIRED" | translate }}
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          formControlName="ingredients"
+          matInput
+          placeholder="{{ 'RESOURCE_MANAGEMENT.PRODUCT_EDITOR.INGREDIENTS_PLACEHOLDER' | translate }}"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          formControlName="allergens"
+          matInput
+          placeholder="{{ 'RESOURCE_MANAGEMENT.PRODUCT_EDITOR.ALLERGENS_PLACEHOLDER' | translate }}"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          formControlName="description"
+          matInput
+          placeholder="{{ 'RESOURCE_MANAGEMENT.PRODUCT_EDITOR.DESCRIPTION_PLACEHOLDER' | translate }}"
+        />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input
+          formControlName="preparationTime"
+          matInput
+          placeholder="{{ 'RESOURCE_MANAGEMENT.PRODUCT_EDITOR.PREPARATION_TIME_PLACEHOLDER' | translate }}"
+        />
+        <mat-error *ngIf="form.controls.preparationTime.hasError('pattern')">
+          {{ "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.ERROR_PREPARATION_TIME_PATTERN" | translate }}
+        </mat-error>
+        <mat-hint>{{ "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.PREPARATION_TIME_HINT" | translate }}</mat-hint>
+      </mat-form-field>
+    </div>
+
+    <div class="second-column">
+      <div class="preview-image">
+        <img *ngIf="!fileFormatError && imagePreviewSrc" [src]="imagePreviewSrc" (load)="onImageLoaded()" />
+      </div>
+      <loading-indicator *ngIf="imagePreviewSrc && imageLoading"></loading-indicator>
+
+      <label for="imageUpload">
+        <input id="imageUpload" type="file" (change)="attachImage($event)" accept="image/*" hidden *ngIf="!productToEdit" />
+        <i class="material-icons" *ngIf="!productToEdit">add_photo_alternate</i>
+      </label>
+      <div *ngIf="productToEdit" class="image-edit-error">
+        {{ "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.CANNOT_EDIT_IMAGE" | translate }}
+      </div>
+      <div *ngIf="fileFormatError" class="file-error">
+        {{ "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.ERROR_FILE_FORMAT" | translate }}
+      </div>
+      <div *ngIf="imageRequiredError" class="file-error">
+        {{ "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.ERROR_IMAGE_REQUIRED" | translate }}
+      </div>
+
+      <mat-form-field>
+        <input
+          formControlName="price"
+          matInput
+          required
+          placeholder="{{ 'RESOURCE_MANAGEMENT.PRODUCT_EDITOR.PRICE_PLACEHOLDER' | translate }}"
+        />
+        <mat-error *ngIf="form.controls.price.hasError('pattern')">
+          {{ "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.ERROR_PRICE_PATTERN" | translate }}
+        </mat-error>
+      </mat-form-field>
+    </div>
+  </form>
+
+  <div class="button">
+    <button-outlined [disabled]="form.invalid" (click)="saveProduct()" [loading]="isLoading$ | async">
+      {{ "RESOURCE_MANAGEMENT.PRODUCT_EDITOR.BUTTON_TEXT" | translate }}
+    </button-outlined>
+  </div>
+</div>

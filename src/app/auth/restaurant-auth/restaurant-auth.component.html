@@ -1,0 +1,59 @@
+<div class="tabgroup-wrapper">
+  <mat-tab-group #matTabGoup (selectedTabChange)="resetError()" color="accent" [dynamicHeight]="true" mat-align-tabs="center">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="tab-label">{{ "AUTH.RESTAURANT.CREATE" | translate }}</span>
+      </ng-template>
+
+      <ng-template matTabContent>
+        <div class="tab-content">
+          <div class="form-label">{{ "AUTH.RESTAURANT.CREATE_RESTAURANT" | translate }}:</div>
+          <auth-form [authFormData]="restaurantFormData"></auth-form>
+
+          <div class="margin-top">
+            <button-outlined (click)="createRestaurant()" [disabled]="restaurantFormData.form.invalid" [loading]="loading$ | async">
+              {{ "AUTH.RESTAURANT.CREATE" | translate }}
+            </button-outlined>
+          </div>
+
+          <div class="message" *ngIf="authError$ | async as authError">
+            <div class="error" *ngIf="authError">
+              <div *ngIf="authError.error.message === 'Restaurant name is taken.'; else unexpected">
+                {{ "AUTH.RESTAURNAT.RESTAURANT_NAME_TAKEN" | translate }}
+              </div>
+              <ng-template #unexpected>{{ "AUTH.RESTAURANT.UNEXPECTED_ERROR" | translate }} </ng-template>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <span class="tab-label">{{ "AUTH.RESTAURANT.JOIN" | translate }}</span>
+      </ng-template>
+
+      <ng-template matTabContent>
+        <div class="tab-content">
+          <div class="form-label">{{ "AUTH.RESTAURANT.JOIN_RESTAURANT" | translate }}:</div>
+          <auth-form [authFormData]="restaurantFormData"></auth-form>
+
+          <div class="margin-top">
+            <button-outlined (click)="joinRestaurant()" [disabled]="restaurantFormData.form.invalid" [loading]="loading$ | async">
+              {{ "AUTH.RESTAURANT.JOIN" | translate }}
+            </button-outlined>
+          </div>
+
+          <div class="message" *ngIf="authError$ | async as authError">
+            <div class="error" *ngIf="authError">
+              <div *ngIf="authError.error.message === 'Incorrect password or restaurant name.'; else unexpected">
+                {{ "AUTH.RESTAURANT.ERROR_WRONG_PASSWORD_OR_RESTAURANT" | translate }}
+              </div>
+              <ng-template #unexpected>{{ "AUTH.RESTAURANT.UNEXPECTED_ERROR" | translate }} </ng-template>
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </mat-tab>
+  </mat-tab-group>
+</div>

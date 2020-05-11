@@ -1,0 +1,40 @@
+@import "~@angular/material/theming";
+@import "../assets/styles/colors";
+
+@include mat-core();
+
+$primary: mat-palette($md-olive);
+$accent: mat-palette($md-orange);
+$warn: mat-palette($mat-red);
+
+$theme: mat-light-theme($primary, $accent, $warn);
+
+@mixin snack-theme($theme) {
+  .mat-snack-bar-container {
+    box-shadow: 0px 1px 2px -1px rgba(0, 0, 0, 0.2), 0px 2px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12) !important;
+  }
+}
+
+@mixin dialog-theme($theme) {
+  .mat-dialog-container {
+    background-color: $color-bg-light !important;
+  }
+
+  .dialog-backdrop-light {
+    background-color: rgba($color-bg-light, 0.65);
+  }
+}
+
+@mixin select-theme($theme) {
+  .mat-option:hover {
+    background-color: $color-bg2-light !important;
+  }
+  .mat-active {
+    background-color: $color-bg2-light !important;
+  }
+}
+
+@include snack-theme($theme);
+@include dialog-theme($theme);
+@include select-theme($theme);
+@include angular-material-theme($theme);

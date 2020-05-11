@@ -1,0 +1,17 @@
+<ion-app>
+  <rota-sidenav
+    #rotaSidenav
+    *ngIf="sidenavData$ | async; let sidenavData"
+    [shouldHaveSidenav]="sidenavData.shouldHave"
+    [navigationData]="sidenavData.navigationData"
+    [title]="sidenavData.title"
+    [icon]="sidenavData.icon"
+    [mode]="sidenavMode"
+    [opened]="sidenavMode === 'side'"
+  >
+    <div sidenav-content-area>
+      <ion-router-outlet> </ion-router-outlet>
+      <i (click)="openSidenav()" class="material-icons" *ngIf="sidenavData.shouldHave">menu</i>
+    </div>
+  </rota-sidenav>
+</ion-app>

@@ -1,0 +1,4 @@
+<button [disabled]="disabled || loading">
+  <ng-content *ngIf="!loading"></ng-content>
+  <loading-indicator *ngIf="loading"></loading-indicator>
+</button>

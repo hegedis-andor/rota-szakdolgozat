@@ -1,0 +1,55 @@
+<div class="container" *ngIf="(cart$ | async).items.length > 0; else cartIsEmpty">
+  <table>
+    <thead>
+      <tr>
+        <th>{{ "ORDERING.CHECKOUT.TABLE_HEADER_NAME" | translate }}</th>
+        <th>{{ "ORDERING.CHECKOUT.TABLE_HEADER_AMOUNT" | translate }}</th>
+        <th>{{ "ORDERING.CHECKOUT.TABLE_HEADER_PRICE_PER_UNIT" | translate }}</th>
+        <th>{{ "ORDERING.CHECKOUT.TABLE_HEADER_PRICE_ALL" | translate }}</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of (cart$ | async).items">
+        <td class="name">{{ item.product.name }}</td>
+        <td>
+          <amount-selector
+            (valueChange)="updateAmount($event, item)"
+            [initialValue]="item.amount"
+            [minValue]="1"
+            [maxValue]="100"
+          ></amount-selector>
+        </td>
+        <td>{{ item.product.price }}</td>
+        <td>{{ item.product.price * item.amount }}</td>
+        <td><i class="material-icons" (click)="removeItemFromCart(item)">remove_shopping_cart</i></td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>{{ (selectedTable$ | async)?.name }}</td>
+        <td></td>
+        <td>{{ "ORDERING.CHECKOUT.TABLE_FOOTER_TOTAL_PRICE" | translate }}:</td>
+        <td>{{ totalAmount$ | async | currency: currency:"symbol-narrow":"0.2-2" }}</td>
+        <td><i class="material-icons" (click)="removeAlltemFromCart()">remove_shopping_cart</i></td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <div class="button">
+    <button-outlined (click)="placeOrder()" *ngIf="selectedTable$ | async; else tableNotSelected">
+      {{ "ORDERING.CHECKOUT.BUTTON_PLACE_ORDER" | translate }}
+    </button-outlined>
+    <ng-template #tableNotSelected>
+      <div class="select-table-sign">
+        {{ "ORDERING.CHECKOUT.TABLE_NOT_SELECTED" | translate }}
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<ng-template #cartIsEmpty>
+  <div class="container">
+    {{ "ORDERING.CHECKOUT.EMPTY_CART" | translate }}
+  </div>
+</ng-template>

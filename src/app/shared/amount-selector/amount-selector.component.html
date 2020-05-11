@@ -1,0 +1,7 @@
+<div class="container">
+  <i (click)="decrease()" class="material-icons decrease" [class.disabled]="amount == minValue">remove</i>
+  <div class="amount">
+    <span>{{ amount }}</span>
+  </div>
+  <i (click)="increase()" class="material-icons increase" [class.disabled]="amount == maxValue">add</i>
+</div>

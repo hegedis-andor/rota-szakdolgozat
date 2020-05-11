@@ -1,0 +1,26 @@
+<mat-sidenav-container autosize class="mat-sidenav-container">
+  <mat-sidenav #sidenav class="mat-sidenav" [autoFocus]="false" [opened]="opened" [mode]="mode" *ngIf="shouldHaveSidenav">
+    <div class="inner-container">
+      <span class="title">
+        <i class="material-icons icon">{{ icon }}</i>
+        {{ title | translate }}
+      </span>
+
+      <div class="navigations">
+        <div class="nav-item" *ngFor="let navItem of navigationData; last as l">
+          <div class="main-nav">
+            <a [routerLink]="navItem.main.route" routerLinkActive="active">{{ navItem.main.name | translate }}</a>
+          </div>
+
+          <div class="sub-nav" *ngFor="let subNavigation of navItem.sub">
+            <a [routerLink]="subNavigation.route" routerLinkActive="active">{{ subNavigation.name | translate }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <ng-content select="[sidenav-content-area]"></ng-content>
+  </mat-sidenav-content>
+</mat-sidenav-container>

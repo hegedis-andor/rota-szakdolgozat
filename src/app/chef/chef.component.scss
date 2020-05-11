@@ -1,0 +1,31 @@
+@import "src/assets/styles/colors";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+  padding-top: 1rem;
+}
+
+.order {
+  padding: 1rem 0.8rem;
+}
+
+.no-orders {
+  color: $color-primary-olive;
+}
+
+.list-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+
+  &:hover {
+    background-color: $color-bg2-light;
+  }
+}
+
+.material-icons {
+  user-select: none;
+  cursor: pointer;
+}

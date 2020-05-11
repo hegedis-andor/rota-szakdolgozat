@@ -1,0 +1,13 @@
+<div class="container">
+  <div class="details">
+    <div class="credential">
+      <span class="bolder">{{ "ADMIN.ADMIN_PAGE.ACCOUNT.USER_EMAIL_TITLE" | translate }}:</span> {{ userEmail }}
+    </div>
+    <div class="credential">
+      <span class="bolder">{{ "ADMIN.ADMIN_PAGE.ACCOUNT.RESTAURANT_NAME" | translate }}: </span>{{ restaurantName }}
+    </div>
+    <div class="button">
+      <button-outlined (click)="signOut.emit()">{{ "ADMIN.ADMIN_PAGE.ACCOUNT.SIGN_OUT" | translate }}</button-outlined>
+    </div>
+  </div>
+</div>
