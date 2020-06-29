@@ -5,7 +5,7 @@
 This is the application for the Bsc thesis
 
 - Deployed at: http://rota-deploy.herokuapp.com
-  - User / Felhasználó:
+  - User:
       - email: email@email.com. 
       - password: asdasd
   - Restaurant:
